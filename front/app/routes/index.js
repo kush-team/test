@@ -4,7 +4,8 @@ import AuthenticatedRouteMixin from 'simple-auth/mixins/authenticated-route-mixi
 export default Ember.Route.extend({
 	model: function () {
 		return Ember.RSVP.hash({
-          towns: this.get('store').find('town', {electoralSection: '5'})
+          towns: this.get('store').find('town', {electoralSection: '5'}),
+          newbies: this.get('store').find('newest')
      	});
 	},
 });
