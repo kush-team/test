@@ -1,0 +1,23 @@
+<form {{action "saveResource" resource model on="submit"}}>
+  <div>
+    <label>
+      Titulo
+      {{input type="text" value=resource.title}}
+    </label>
+  </div>
+
+  <div>
+    <label>
+      Descripcion
+      {{input type="text" value=resource.description}}
+    </label>
+  </div> 
+
+  <div class="hero-logo -profile">
+      {{file-uploader file=resource.asset multiple=false}}
+  </div> 		   
+
+  <div>
+    <input type="submit" value="Guardar">
+  </div>
+</form>

@@ -1,0 +1,23 @@
+<h2>Consulta al Padron</h2>
+{{#if searching}}
+	<p>Buscando...</p>
+{{else}}
+	{{#if voter}}
+		<p>{{voter.nombre}} {{voter.apellido}}</p>
+		<p>{{voter.matricula}}</p>
+		<p>{{voter.sexo}}</p>
+		<p>{{voter.afiliado}}</p>
+		<p>{{voter.domicilio}}</p>
+		<p>{{voter.escuela}}</p>
+		<p>{{voter.direccion_escuela}}</p>
+		<p>{{voter.mesa}}</p>
+		<a {{action 'clear'}}>Limpiar</a>
+	{{else}}
+		{{#if controller.searched}}
+			<p>No se encontro resultado</p>
+			<a {{action 'clear'}}>Limpiar</a>
+		{{else}}
+			{{partial 'partials/padron-form'}}
+		{{/if}}
+	{{/if}}
+{{/if}}

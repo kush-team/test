@@ -1,0 +1,45 @@
+  <div class="section-header -table">
+    <h1>Listado de roles</h1>
+    {{link-to "Crear nuevo rol" "admin.roles.new" classNames="btn" }}
+  </div>
+
+{{#if model.length}}
+ <div class="section-content ">
+  <table class="table-minimal">
+    <thead>
+      <tr>
+        <th>
+          Nombre
+        </th>
+        <th>
+          Descripción
+        </th>
+        <th colspan="3">
+          Acciones
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each role in model}}
+        <tr>
+          <td>
+            {{role.name}}
+          </td>
+          <td>
+            {{role.description}}
+          </td>
+          <td>
+            {{link-to "Editar" "admin.roles.edit" role}}
+          </td>
+          <td>
+            <a href="#" {{action "remove" role}}>Eliminar</a>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  </div>
+{{else}}
+  <div class="loading">
+  </div>
+{{/if}}

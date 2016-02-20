@@ -1,0 +1,86 @@
+@import "plugins/plugins";
+@import "base/base";
+@import "modules/modules";
+@import "layouts/layouts";
+
+.pace .pace-progress {
+  background: #013696;
+  position: fixed;
+  z-index: 8000;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  height: 5px;
+}
+
+
+.input-error {
+	display: none;
+}
+
+.text-right {
+	text-align: right;
+}
+
+
+.card-headers {
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    right: 0;
+    top: 60px;
+    text-align: center;
+  
+}
+
+.card {
+
+	&.-brief {
+		.card-meta {
+		
+			font-weight: 600;
+
+			time {
+				font-size: 16px;
+			}
+		}
+
+		a {
+			opacity: 0.6;
+		}
+
+	}
+
+	&.-detail {
+.card-meta {
+		
+		font-weight: 600; 
+
+
+		time {
+			font-size: 22px;
+		}
+		
+	}
+
+	}
+
+}
+
+
+.modal-welcome {
+	position: fixed;
+	z-index: 2000;
+	top: 20%;
+	right: 20%;
+	width: 300px;
+	background: #fff;
+	padding: 15px;
+	@include box-shadow;
+	text-align: center;
+
+	img {
+		margin: 0 auto;
+		display: block;
+	}
+}

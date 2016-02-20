@@ -1,0 +1,20 @@
+{{#if session.isAuthenticated}}
+	<ul>
+		{{#each session.user.towns as |town|}}
+			<li>
+				{{#link-to 'towns.show' town.id}}
+					{{town.name}}
+				{{/link-to}}
+			</li>
+		{{/each}}
+	</ul>
+
+	<div>
+		{{view "select" content=session.user.towns value=currentTown optionLabelPath="content.name"}}
+		{{csv-exporter town=currentTown}}
+	</div>
+
+	<div>
+		{{voter-info}}
+	</div>
+{{/if}}
