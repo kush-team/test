@@ -9,4 +9,5 @@ export default DS.Model.extend({
 	clase: DS.attr('string'),
 	afiliado: DS.attr('string'),
 	seccion: DS.attr('string'),
+	town: DS.belongsTo('town', {async: true})
 });

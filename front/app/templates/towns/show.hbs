@@ -1,30 +1,8 @@
-{{model.name}}
+{{model.town.name}}
 
-{{csv-exporter town=model}}
-
-
+<h3>Ultimas fichas cargadas</h3>
 <ul>
-{{#each model.resources as |resource|}}
-	{{#unless resource.isNew}}
-	<li>
-		<b>{{resource.title}}</b> {{resource.description}}
-		{{#if resource.asset}}
-			<a href={{resource.asset.url}}>{{resource.asset.fileName}}</a>
-		{{/if}}
-		{{#if (can 'edit editor')}}
-			<a {{action 'removeResource' resource}}>X</a>
-		{{/if}}
-	</li>
-	{{/unless}}
+{{#each model.newbies as |newby|}}
+	<li>{{newby.voter.matricula}}  {{newby.voter.afiliado}}</li>
 {{/each}}
 </ul>
-
-{{#if (can 'edit editor')}}
-	{{#if newResource}}
-		{{#with newResource as |resource|}}
-			{{partial 'partials/resource-form'}}
-		{{/with}}
-	{{else}}
-		<a {{action 'addResource' model}}>Agregar recurso</a>
-	{{/if}}
-{{/if}}
