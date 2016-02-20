@@ -16,7 +16,7 @@ module.exports = function(environment) {
     APP: {
       emberDataSails:  {
         // default is to use same host and port as the ember app:
-        host: 'http://localhost:1337',
+        host: 'http://181.168.49.203:1337',
         // this is the default and is the path to the sails io script:
         scriptPath: '/js/dependencies/sails.io.js'
       }   
@@ -61,10 +61,10 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
     ENV['adapter'] = {
-      'host': 'http://localhost:1337',
+      'host': 'http://181.168.49.203:1337',
       'namespace': 'api',
-      'fileUrl': 'http://localhost:1337/',
-      'upload': 'http://localhost:1337/upload-file',      
+      'fileUrl': 'http://181.168.49.203:1337/',
+      'upload': 'http://181.168.49.203:1337/upload-file',      
     };
 
 
@@ -81,14 +81,14 @@ module.exports = function(environment) {
 
     ENV['simple-auth'] = {
       authorizer: 'simple-auth-authorizer:token',
-      crossOriginWhitelist: ['http://localhost:1337'],
+      crossOriginWhitelist: ['http://181.168.49.203:1337'],
 
       session: 'session:custom',
     };
 
     // Sailsjs JSON Web Token (JWT) Configuration
     ENV['simple-auth-token'] = {
-      serverTokenEndpoint: 'http://localhost:1337/auth/login',
+      serverTokenEndpoint: 'http://181.168.49.203:1337/auth/login',
       authorizationPrefix: null,
       tokenPropertyName: 'access_token',
       authorizationHeaderName: 'access_token',
@@ -117,17 +117,17 @@ module.exports = function(environment) {
   if (environment === 'production') {
 
     ENV['adapter'] = {
-      'host': 'http://localhost:1337',
+      'host': 'http://181.168.49.203:1337',
       'namespace': 'api',
-      'fileUrl': 'http://localhost:1337/',
-      'upload': 'http://localhost:1337/upload-file',      
+      'fileUrl': 'http://181.168.49.203:1337/',
+      'upload': 'http://181.168.49.203:1337/upload-file',      
     };
 
     ENV['contentSecurityPolicy'] = {
         'default-src': "*",
         'script-src': "*",
         'font-src': "*",
-        'connect-src': "'self' http://localhost:1337 ws://irreversible.cc:1337/ ws://irreversible.cc:35729/livereload http://nominatim.openstreetmap.org/",
+        'connect-src': "'self' http://181.168.49.203:1337 ws://irreversible.cc:1337/ ws://irreversible.cc:35729/livereload http://nominatim.openstreetmap.org/",
         'img-src': "*",
         'style-src': "*",
         'media-src': "*",
@@ -136,14 +136,14 @@ module.exports = function(environment) {
 
     ENV['simple-auth'] = {
       authorizer: 'simple-auth-authorizer:token',
-      crossOriginWhitelist: ['http://localhost:1337'],
+      crossOriginWhitelist: ['http://181.168.49.203:1337'],
 
       session: 'session:custom',
     };
 
     // Sailsjs JSON Web Token (JWT) Configuration
     ENV['simple-auth-token'] = {
-      serverTokenEndpoint: 'http://localhost:1337/auth/login',
+      serverTokenEndpoint: 'http://181.168.49.203:1337/auth/login',
       authorizationPrefix: null,
       tokenPropertyName: 'access_token',
       authorizationHeaderName: 'access_token',
