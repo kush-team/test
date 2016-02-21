@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   dni: '',
   voter: null,
+  newest: null,
 
   actions: {
 
@@ -11,6 +12,7 @@ export default Ember.Component.extend({
   		this.set('searched', false);
   		this.set('voter', null);
   		this.set('dni', '');
+      this.set('newest', null);
   	},
 
   	search: function () {
@@ -30,10 +32,37 @@ export default Ember.Component.extend({
   	},
 
   	create: function () {
-  		this.get('store').createRecord('newest', {
+      var _this = this;
+  		var n = this.get('store').createRecord('newest', {
   			voter: this.get('voter'),
   			town: this.get('voter').get('town')
-  		}).save();
+  		});
+      this.set('newest', n);
   	},
+
+    save: function () {
+      var _this = this;
+      if (this.get('newest')) {
+        this.get('newest').save().then(function () {
+          _this.set('searching', false);
+          _this.set('searched', false);
+          _this.set('voter', null);
+          _this.set('dni', '');
+          _this.set('newest', null);        
+        });
+      }
+    },
+
+    cancel: function () {
+      if (this.get('newest')) {
+        this.get('newest').rollback();
+      }
+      this.set('searching', false);
+      this.set('searched', false);
+      this.set('voter', null);
+      this.set('dni', '');
+      this.set('newest', null);     
+    }
+
   }	
 });

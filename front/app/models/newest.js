@@ -3,6 +3,12 @@ import DS from 'ember-data';
 export default DS.Model.extend({
   	voter: DS.belongsTo('voter', {async: true}),
   	town: DS.belongsTo('town', {async: true}),
-  	create_at: DS.attr('date'),
-  	updated_at: DS.attr('date')
+  	createAt: DS.attr('date'),
+  	updatedAt: DS.attr('date'),
+    nacimiento: DS.attr('string'),
+    dm: DS.attr('string'),
+    reg: DS.attr('string'),
+    lugarNacimiento: DS.attr('string'),
+    profesion: DS.attr('string'),
+    estadoCivil: DS.attr('string')
 });

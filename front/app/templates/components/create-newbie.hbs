@@ -3,20 +3,29 @@
 	<p>Buscando...</p>
 {{else}}
 	{{#if voter}}
-		
-		<p>
-			<a class="small-btn" {{action 'create'}}>Guardar Ficha</a>
-			<a class="small-btn"  {{action 'clear'}}>Limpiar</a>
-		</p>
+		{{#if newest}}
+			<p>
+				<a class="small-btn" {{action 'save'}}>Guardar</a>
+				<a class="small-btn"  {{action 'cancel'}}>Cancelar</a>
+				 {{input type="text" value=newest.profesion}}
+				 {{input type="text" value=newest.nacimiento}}
+				 {{input type="text" value=newest.dm}}
+				 {{input type="text" value=newest.reg}}
+				 {{input type="text" value=newest.lugarNacimiento}}
+				 {{input type="text" value=newest.estadoCivil}}
+			</p>
+		{{else}}
+			<p>
+				<a class="small-btn" {{action 'create'}}>Crear Ficha</a>
+				<a class="small-btn"  {{action 'clear'}}>Limpiar</a>
+			</p>
+		{{/if}}
 
 		<p>{{voter.nombre}} {{voter.apellido}}</p>
 		<p>{{voter.matricula}}</p>
 		<p>{{voter.sexo}}</p>
 		<p>{{voter.afiliado}}</p>
-		<p>{{voter.domicilio}}</p>
-		<p>{{voter.escuela}}</p>
-		<p>{{voter.direccion_escuela}}</p>
-		<p>{{voter.mesa}}</p>
+		<p>{{voter.domicilio}}</p>		
 		
 	{{else}}
 		{{#if controller.searched}}

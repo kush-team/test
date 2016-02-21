@@ -33,7 +33,16 @@ Router.map(function() {
       this.route("show", {
         path: ":town_id/show"
       });
-  });         
+  });
+
+  this.route('newests', function() {
+    this.route('show', {
+        path: ":newest_id/show"
+    });
+    this.route('edit', {
+        path: ":newest_id/edit"
+    });
+  });
 });
 
 export default Router;

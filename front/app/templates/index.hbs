@@ -23,7 +23,9 @@
 				{{#if newby.voter.matricula}}
 					<li> 
 						<div class="edit">
-							{{fa-icon 'pencil'}}
+							{{#link-to 'newests.edit' newby}}
+								{{fa-icon 'pencil'}}
+							{{/link-to}}
 						</div>
 						<div class="content">
 							
