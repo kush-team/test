@@ -2,4 +2,8 @@
     width: 400px;
     margin: 5% auto;
     text-align: center;
+
+     @include media($tablet) {
+			width: 280px;
+		}
 }

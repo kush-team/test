@@ -38,11 +38,13 @@
 @import "components/range";
 @import "components/radio-button";
 @import "components/switch";
+@import "components/voter";
 
 // Pages
 @import "pages/simple-page";
 @import "pages/document-page";
 @import "pages/login-page";
+@import "pages/search-page";
 @import "pages/home";
 @import "pages/contact";
 @import "pages/welcome";
@@ -50,6 +52,7 @@
 // Themes
 @import "themes/theme";
 @import "themes/admin";
+
 
 
 

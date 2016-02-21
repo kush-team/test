@@ -1,19 +1,62 @@
-{{model.voter.nombre}}
-{{model.voter.nombre}}
-{{model.voter.apellido}}
-{{model.voter.matricula}}
-{{model.voter.direccion}}
-{{model.voter.seccion}}
-<form {{action "save" on="submit"}} class="create-event">
+<div class="nav-wrap">
+	<ul>
+		{{#each session.user.towns as |town|}}
+			<li>
+				{{#link-to 'towns.show' town.id}}
+					{{town.name}}
+				{{/link-to}}
+			</li>
+		{{/each}}
+	</ul>
+</div>
 
- {{input type="text" value=model.profesion}}
- {{input type="text" value=model.nacimiento}}
- {{input type="text" value=model.dm}}
- {{input type="text" value=model.reg}}
- {{input type="text" value=model.lugarNacimiento}}
- {{input type="text" value=model.estadoCivil}}
- 
-  <div>
-    <input type="submit" value="Guardar">
-  </div>
-</form>
+<div class="main-content-wrap">
+	<div class="voter-container">
+		<div class="voter-item sex-{{model.voter.sexo}}">
+			<div class="image">
+				<img src="http://semantic-ui.com/images/avatar/large/helen.jpg" alt="">
+			</div>
+			<div class="content">
+				<h4 class="header">
+				{{model.voter.nombre}} <b>{{model.voter.apellido}}</b>
+				<span class="afiliado-{{model.voter.afiliado}}">Afiliado</span>
+				</h4>
+				<p class="description">{{model.voter.matricula}}</p>
+				<p>{{model.voter.sexo}}</p>
+				<p>{{model.voter.domicilio}}</p>		
+
+			</div>
+		</div>
+	</div>
+
+	<form {{action "save" on="submit"}} class="newest-form">
+		<fieldset>
+			<label for="">Profesion</label>
+			{{input type="text" value=model.profesion}}
+		</fieldset>
+		<fieldset>
+			<label for="">Nacimiento</label>
+			{{input type="text" value=model.nacimiento}}
+		</fieldset>
+		<fieldset>
+			<label for="">DM</label>
+			{{input type="text" value=model.dm}}
+		</fieldset>
+		<fieldset>
+			<label for="">Reg</label>
+			{{input type="text" value=model.reg}}
+		</fieldset>
+		<fieldset>
+			<label for="">Lugar de nacimiento</label>
+			{{input type="text" value=model.lugarNacimiento}}
+		</fieldset>
+		<fieldset>
+			<label for="">Estado civil</label>
+			{{input type="text" value=model.estadoCivil}}
+		</fieldset>
+		<div>
+			<input type="submit" value="Guardar">
+		</div>
+	</form>
+
+</div>

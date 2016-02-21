@@ -1,32 +1,69 @@
-<h2>Cargar Ficha</h2>
+<h2>Buscador</h2>
+
 {{#if searching}}
 	<p>Buscando...</p>
 {{else}}
-	{{#if voter}}
-		{{#if newest}}
-			<p>
-				<a class="small-btn" {{action 'save'}}>Guardar</a>
-				<a class="small-btn"  {{action 'cancel'}}>Cancelar</a>
-				 {{input type="text" value=newest.profesion}}
-				 {{input type="text" value=newest.nacimiento}}
-				 {{input type="text" value=newest.dm}}
-				 {{input type="text" value=newest.reg}}
-				 {{input type="text" value=newest.lugarNacimiento}}
-				 {{input type="text" value=newest.estadoCivil}}
-			</p>
-		{{else}}
-			<p>
-				<a class="small-btn" {{action 'create'}}>Crear Ficha</a>
-				<a class="small-btn"  {{action 'clear'}}>Limpiar</a>
-			</p>
-		{{/if}}
 
-		<p>{{voter.nombre}} {{voter.apellido}}</p>
-		<p>{{voter.matricula}}</p>
-		<p>{{voter.sexo}}</p>
-		<p>{{voter.afiliado}}</p>
-		<p>{{voter.domicilio}}</p>		
-		
+	{{#if voter}}
+		<div class="voter-container">
+			
+			<div class="voter-item sex-{{voter.sexo}}">
+				<div class="image">
+					<img src="http://semantic-ui.com/images/avatar/large/helen.jpg" alt="">
+				</div>
+				<div class="content">
+					<h4 class="header">
+					{{voter.nombre}} <b>{{voter.apellido}}</b>
+					<span class="afiliado-{{voter.afiliado}}">Afiliado</span>
+					</h4>
+					<p class="description">{{voter.matricula}}</p>
+					<p>{{voter.sexo}}</p>
+					<p>{{voter.domicilio}}</p>		
+
+				</div>
+			</div>
+
+			{{#if newest}}
+				<div class="newest-form">
+					
+				 <fieldset>
+				 	<label for="">Profesion</label>
+				 	{{input type="text" value=newest.profesion}}
+				 </fieldset>
+				 <fieldset>
+				 	<label for="">Nacimiento</label>
+				 	{{input type="text" value=newest.nacimiento}}
+				 </fieldset>
+				 <fieldset>
+				 	<label for="">DM</label>
+				 	{{input type="text" value=newest.dm}}
+				 </fieldset>
+				 <fieldset>
+				 	<label for="">Reg</label>
+				 	{{input type="text" value=newest.reg}}
+				 </fieldset>
+				 <fieldset>
+				 	<label for="">Lugar de nacimiento</label>
+				 	{{input type="text" value=newest.lugarNacimiento}}
+				 </fieldset>
+				 <fieldset>
+				 	<label for="">Estado civil</label>
+				 	{{input type="text" value=newest.estadoCivil}}
+				 </fieldset>
+				</div>
+				 <p>
+					<a class="small-btn" {{action 'save'}}>Guardar</a>
+					<a class="small-btn"  {{action 'cancel'}}>Cancelar</a>
+				</p>
+			{{else}}
+				<p>
+					<a class="small-btn" {{action 'create'}}>Crear Ficha</a>
+					<a class="small-btn"  {{action 'clear'}}>Limpiar</a>
+				</p>
+			{{/if}}
+
+		</div>
+
 	{{else}}
 		{{#if controller.searched}}
 			<p>No se encontro resultado</p>
@@ -36,3 +73,4 @@
 		{{/if}}
 	{{/if}}
 {{/if}}
+
