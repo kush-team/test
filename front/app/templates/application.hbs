@@ -1,12 +1,9 @@
-{{#if session.isAuthenticated}}
-	<nav {{bind-attr class=":change-app-container isShowApps:is-visible"}}>
-		<ul>
-			<li {{bind-attr class="isHome:active"}}>
-				{{#link-to 'index'}} 
-					{{fa-icon "home"}}
-					<span>Inicio</span>
-				{{/link-to}}
-			</li>		
+<div class="page-wrap">
+	{{#if session.isAuthenticated}}
+
+	<div class="top-bar">
+		{{#link-to 'index' class="top-bar__logo"}} {{fa-icon "search"}} {{/link-to}}
+		<ul class="top-bar__list">
 
 			{{#if (can 'view admin')}}
 			<li {{bind-attr class="isAdmin:active"}} >
@@ -16,6 +13,7 @@
 				{{/link-to}}
 			</li>
 			{{/if}}
+
 			{{#if (can 'view data-entry')}}
 			<li {{bind-attr class="isDataEntry:active"}} >
 				{{#link-to 'data-entry.elections.countries.index'}} 
@@ -24,38 +22,17 @@
 				{{/link-to}}
 			</li>
 			{{/if}}
+
+			<li>
+				<a {{ action 'invalidateSession' }}>
+					Salir {{fa-icon "sign-out"}}
+				</a>
+			</li>
+
 		</ul>
-	</nav> <!-- .change-app-container -->
+	</div>
 
-	<header {{bind-attr class="isShowApps:is-visible isHome:-home isDataEntry:-admin isAdmin:-admin"}}>
-		{{#if isAdmin}}
-			<button class="logo" {{action 'toggleApps' target="view"}}>
-				<img src="assets/images/observatorio-logo.svg">
-			</button>
-			<h3>Administración</h3>
-			<button {{bind-attr class=":menu-button :cbutton :cbutton--effect-nikola isShowClick:cbutton--click"}} {{action 'toggleMenu' target="view"}}>
-				{{fa-icon "bars"}}
-			</button>
-		{{/if}}
-
-		{{#if isShowApps}}
-			<a class="log-out" {{ action 'invalidateSession' }}>
-				<span>Cerrar sesión</span> {{fa-icon "sign-out"}}
-			</a>
-		{{/if}}	
-
-		{{#if isDataEntry}}
-			<button class="logo" {{action 'toggleApps' target="view"}}>
-				<img src="assets/images/observatorio-logo.svg">
-			</button>
-			<h3>Manejo de datos</h3>
-			<button {{bind-attr class=":menu-button :cbutton :cbutton--effect-nikola isShowClick:cbutton--click"}} {{action 'toggleMenu' target="view"}}>
-				{{fa-icon "bars"}}
-			</button>
-		{{/if}}
-	</header>
-
-	<div {{bind-attr class=":menu-wrap isShowMenu:show isData:-data isHome:-home isDataEntry:-admin isRed:-red isCalendar:-calendar isAdmin:-admin"}}> 
+	<div {{bind-attr class=":menu-wrap"}}> 
 		<div class="menu-nav fa-ul">
 			{{#if session.isAuthenticated}}
 				{{#if isAdmin}}
@@ -80,38 +57,25 @@
 				{{/if}}		
 			{{/if}}
 		</div>
-
-		<ul class="menu-bottom">
-			<li>
-				<a {{ action 'invalidateSession' }}>
-					Salir {{fa-icon "sign-out"}}
-				</a>
-			</li>
-		</ul>
 	</div><!-- main-nav-wrap -->
 
 	{{else}}
 
-	<header {{bind-attr class=":welcome isHome:-home isDataEntry:-admin isAdmin:-admin"}}>
-		<div class="container-header">
-			<div class="logo-home">
-				{{#link-to 'index'}}
-					<img src="assets/images/logo-oblat.svg">
-				{{/link-to}}
-			</div>
+	<div class="welcome">
+		<h1>
+		{{#link-to 'login' class="btn btn-default"}}
+			Consulta de afiliados
+		{{/link-to}}
+		
+	</h1>
+	</div>
 
-			<nav>
-				<ul>
-				</ul>
-			</nav>
-		</div>
-	</header>
 {{/if}}
 
 
 
-<div {{bind-attr class=":content isHome:-home isShowMenu:show isShowApps:is-visible isDataEntry:-admin isAdmin:-admin"}}>
+	<div {{bind-attr class=":content"}}>
+		{{outlet}}
+	</div>
+
 </div>
-{{outlet}}
-
-

@@ -1,0 +1,33 @@
+.cp-Panel {
+  border-bottom: 1px solid #ddd;
+}
+.cp-Panel-toggle {
+  display: block;
+  padding: 0 1em;
+}
+.cp-Panel-toggle:link {
+  text-decoration: none;
+}
+.cp-Panel-toggle:hover {
+  //background-color: whitesmoke;
+}
+.cp-Panel-body-inner {
+  padding: 1em;
+}
+
+.cp-Panel-toggle:before {
+    content: '▶';
+    font-size: 14px;
+    display: inline-block;
+	@include transition(all 0.2s ease-in-out);
+    position: relative;
+    top: -0.2em;
+    left: -0.5em;
+}
+
+.cp-is-open {
+	.cp-Panel-toggle:before {
+		@include transform(rotate(90deg));
+		color: tint($dark, 50%);
+	}
+}

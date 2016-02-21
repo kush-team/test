@@ -1,0 +1,27 @@
+// instantiating the code with semantic naming
+// this is the only moment that we are writing
+// any code to be compiled
+.download-assets {
+  @extend %btn--primary;
+  color: #fff;
+}
+
+.small-btn {
+	@extend %btn--secondary;
+	color: #fff;
+}
+
+#{$all-buttons} {
+ background: $main-color;
+ border-color: $main-color;
+ font-family: $font-sans;
+}
+
+#{$all-buttons-focus},
+#{$all-buttons-hover} {
+  background: tint($main-color, 15%);
+}
+
+#{$all-buttons-active} {
+  background: tint($main-color, 25%);
+}

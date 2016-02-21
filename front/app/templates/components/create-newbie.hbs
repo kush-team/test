@@ -3,6 +3,12 @@
 	<p>Buscando...</p>
 {{else}}
 	{{#if voter}}
+		
+		<p>
+			<a class="small-btn" {{action 'create'}}>Guardar Ficha</a>
+			<a class="small-btn"  {{action 'clear'}}>Limpiar</a>
+		</p>
+
 		<p>{{voter.nombre}} {{voter.apellido}}</p>
 		<p>{{voter.matricula}}</p>
 		<p>{{voter.sexo}}</p>
@@ -12,12 +18,10 @@
 		<p>{{voter.direccion_escuela}}</p>
 		<p>{{voter.mesa}}</p>
 		
-		<a {{action 'create'}}>Guardar Ficha</a>
-		<a {{action 'clear'}}>Limpiar</a>
 	{{else}}
 		{{#if controller.searched}}
 			<p>No se encontro resultado</p>
-			<a {{action 'clear'}}>Limpiar</a>
+			<a class="small-btn" {{action 'clear'}}>Limpiar</a>
 		{{else}}
 			{{partial 'partials/padron-form'}}
 		{{/if}}

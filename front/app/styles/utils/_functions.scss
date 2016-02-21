@@ -1,0 +1,13 @@
+/* 
+How to dynamically change text color based on a background color
+*/
+
+@function set-notification-text-color($color) {
+  @if (lightness($color) > 50) {
+    @return $dark; // Lighter backgorund, return dark color
+  } @else {
+    @return $white; // Darker background, return light color
+  }
+}
+
+

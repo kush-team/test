@@ -1,0 +1,40 @@
+.top-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 1;
+    background: #f9f9f9;
+    padding: 24px 0;
+    @include display(flex);
+    @include align-items(center);
+
+
+    &__logo {
+      flex-basis: 70px;
+      text-align: center;
+
+      img {
+
+      }
+    }
+
+    &__list {
+       @include display(flex);
+       @include transition(all 5s $ease-in-circ);
+      flex-basis: 100%;
+      justify-content: space-between;
+
+       li {
+        padding: 0 15px;
+       }
+
+       a {
+        color: $dark;
+
+        &.active {
+          color: $main-color;
+        }
+       }
+    }
+}

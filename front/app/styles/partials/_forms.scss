@@ -1,0 +1,81 @@
+fieldset {
+	@include outer-container;
+
+	.field-wrapper {
+		@include span-columns(5.5);
+  		@include omega(2n);
+  		position: relative;
+
+  		@include media($desktop) {
+			@include span-columns(12);
+			@include shift(0);
+		}
+
+		@include media($tablet) {
+			@include span-columns(5);
+			@include shift(0);
+		}
+
+  		@include media($mobile) {
+			@include span-columns(6);
+			@include shift(0);
+		}
+	}
+
+	label {
+		font-weight: 600;
+		margin-bottom: 0.5em;
+	}
+
+	select {
+		border: 1px solid $main-color;
+		padding: 0.48em;
+		margin-bottom: 1.5em;
+		background: transparent;
+		border-radius: 3px;
+	}
+
+	output {
+	    position: absolute;
+	    left: 145px;
+	    top: 28px;
+	    font-size: 19px;
+	    font-weight: 600;
+	}
+
+	#{$all-text-inputs} {
+	  border: 1px solid #999;
+	  padding: 0.5em ;
+	  margin-bottom: 1.5em;
+	  @extend %font-stack--body;
+	}
+
+	
+	#{$all-text-inputs-focus},
+	#{$all-text-inputs-hover} {
+		border-color: $main-color;
+	}
+
+	/*
+	#{$all-text-inputs-active} {
+	  border: 1px solid #00f;
+	}
+	*/
+
+	.field-help {
+		white-space: normal;
+		word-wrap: break-word;
+		width: 100%;
+		max-width: 635px;
+		font-size: 0.8em;
+		line-height: 24px;
+		font-weight: 600;
+		position: relative;
+		color: $main-color;
+		margin-top: -19px;
+		margin-bottom: 18px;
+	}
+
+
+}
+

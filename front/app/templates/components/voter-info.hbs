@@ -3,15 +3,19 @@
 	<p>Buscando...</p>
 {{else}}
 	{{#if voter}}
+		<div class="vote-card sex-{{voter.sexo}}">
+			
 		<p>{{voter.nombre}} {{voter.apellido}}</p>
 		<p>{{voter.matricula}}</p>
 		<p>{{voter.sexo}}</p>
 		<p>{{voter.afiliado}}</p>
+		<div class="badge afiliado-{{newby.voter.afiliado}}">&nbsp;</div>
 		<p>{{voter.domicilio}}</p>
 		<p>{{voter.escuela}}</p>
 		<p>{{voter.direccion_escuela}}</p>
 		<p>{{voter.mesa}}</p>
 		<a {{action 'clear'}}>Limpiar</a>
+		</div>
 	{{else}}
 		{{#if controller.searched}}
 			<p>No se encontro resultado</p>

@@ -1,0 +1,14 @@
+header {
+    margin: 2em 0;
+
+	.page-heading {
+		font-size: 3em;
+		color: $main-color;
+		margin-bottom: 5px;
+	}
+
+	.page-subheading {
+		font-size: 1.4em;
+		color: shade($main-color, 35%);
+	}
+}

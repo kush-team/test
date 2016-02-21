@@ -1,0 +1,23 @@
+// the colon after the argument denotes a default value
+// creating the constructor function (mixin)
+
+@mixin btn-me($color: #477dca, $size: normal) {
+  border: 1px solid $color;
+  border-radius: 3px;
+  background: $color;
+  outline: none;
+  transition-duration: .25s;
+  cursor: pointer;
+  padding: .5em 1em;
+
+  @if $size == 'small' {
+    font-size: .8em;
+  } @else {
+    font-size: 1.2em;
+  }
+
+  &:hover {
+    color: white;
+    background: shade($color, 15%);
+  }
+}

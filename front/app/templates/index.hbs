@@ -1,4 +1,5 @@
 {{#if session.isAuthenticated}}
+	<div class="nav-wrap">
 	<ul>
 		{{#each session.user.towns as |town|}}
 			<li>
@@ -8,14 +9,41 @@
 			</li>
 		{{/each}}
 	</ul>
-
-	<div>
-		{{view "select" content=session.user.towns value=currentTown optionLabelPath="content.name"}}
-		{{csv-exporter town=currentTown}}
 	</div>
 
-	<div>
-		{{voter-info}}
-		{{create-newbie}}
+	<div class="main-content-wrap">
+		<div class="create-newbie">
+			{{create-newbie}}
+		</div>
+
+		<div class="newbie-container">
+			<h3>Ultimos afiliados cargados</h3>
+			<ul class="newbie-list">
+			{{#each model.newbies as |newby|}}
+				{{#if newby.voter.matricula}}
+					<li> 
+						<div class="edit">
+							{{fa-icon 'pencil'}}
+						</div>
+						<div class="content">
+							
+							<div class="header">{{newby.voter.nombre}} {{newby.voter.apellido}} - {{newby.voter.matricula}}</div>
+						</div>
+						<div class="last-item">
+							<div class="badge afiliado-{{newby.voter.afiliado}}">&nbsp;</div>
+							<div class="badge badge-notice">{{newby.voter.seccion}}</div>
+						</div>
+					</li>
+				{{else}}
+					<li class="fullfilled" >
+						<div class="content">
+							<span>&nbsp;</span>
+						</div>
+					</li>
+				{{/if}}
+			{{/each}}
+			</ul>
+		</div>
+
 	</div>
 {{/if}}

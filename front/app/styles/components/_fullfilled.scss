@@ -1,0 +1,10 @@
+.fullfilled {
+	span {
+		background: linear-gradient(329deg,#f1f1f1,#f9f9f9) 0 0/400% 400%;
+		-webkit-animation: AnimationName 4s ease infinite;
+		-moz-animation: AnimationName 4s ease infinite;
+		animation: AnimationName 4s ease infinite;
+		width: 200px;
+		display: inline-block;
+	}
+}

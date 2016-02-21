@@ -1,0 +1,58 @@
+.page-wrap {
+
+	&.document-page {
+
+		@include span-columns(8);
+		@include shift(2);
+
+
+
+		@include media($tablet) {
+			@include span-columns(12);
+			@include shift(0);
+		}
+
+		.top-bar {
+			justify-content: space-around;
+		}
+
+		.main-content-wrap {
+			@include span-columns(7);
+			min-height: calc(100vh - 160px);
+
+			 @include media($desktop) {
+				@include span-columns(10);
+				@include shift(1);
+			}
+		}
+
+		.nav-wrap {
+		    @include span-columns(4);
+		    padding: 0 20px;
+
+		    @include media($desktop) {
+				display: none;
+			}
+
+			li {
+				line-height: 23px;
+				margin: 0 0 1em 0;
+			}
+		}
+
+		section {
+			margin-bottom: 8.125em;
+			float: left;
+			width: 100%;
+		}
+
+	}
+
+
+}
+
+
+
+
+
+

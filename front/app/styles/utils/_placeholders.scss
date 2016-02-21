@@ -1,0 +1,27 @@
+%btn--primary {
+  @include btn-me($main-color); // no arguments means it takes defaults
+}
+
+%btn--secondary {
+  @include btn-me($main-color, small)
+}
+
+
+%font-stack--body {
+  // actual Pinterest font stack (!)
+  font-family: $font-sans;
+}
+
+%font-stack--headers {
+  @extend %font-stack--body;
+  font-weight: 600; //headers are the same typeface as everything else but have a heavier weight
+}
+
+%type--base-body {
+  @extend %font-stack--body; //extend the body stack
+}
+
+%type--base-h2 {
+  @extend %font-stack--headers; //extend headers (which extend body stack and give them a heavier weight)
+  font-size: 1.5em; //font-size adjustment
+}

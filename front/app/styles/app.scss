@@ -1,86 +1,55 @@
-@import "plugins/plugins";
-@import "base/base";
-@import "modules/modules";
-@import "layouts/layouts";
+// Thoughtbot Vendors
+@import 'bower_components/bourbon/app/assets/stylesheets/bourbon';
+@import 'bower_components/neat/app/assets/stylesheets/neat';
+@import 'bower_components/bitters/app/assets/stylesheets/base';
 
-.pace .pace-progress {
-  background: #013696;
-  position: fixed;
-  z-index: 8000;
-  top: 0;
-  right: 100%;
-  width: 100%;
-  height: 5px;
-}
+// Utils
+@import "utils/variables";
+@import "utils/mixins";
+@import "utils/placeholders";
+@import "utils/functions";
 
 
-.input-error {
-	display: none;
-}
+// Base
+@import "base/reset";
+@import "base/typography";
 
-.text-right {
-	text-align: right;
-}
+// Layouts
+@import "partials/navigation";
+@import "partials/header";
+@import "partials/footer";
+@import "partials/sidebar";
+@import "partials/forms";
+@import "partials/table";
 
+// Components
+@import "components/accordion";
+@import "components/alert";
+@import "components/badge";
+@import "components/buttons";
+@import "components/checkbox";
+@import "components/create-newbie";
+@import "components/dropdown";
+@import "components/fullfilled";
+@import "components/hover-tile";
+@import "components/input-type";
+@import "components/list";
+@import "components/nav-bar";
+@import "components/range";
+@import "components/radio-button";
+@import "components/switch";
 
-.card-headers {
-    position: absolute;
-    z-index: 10;
-    left: 0;
-    right: 0;
-    top: 60px;
-    text-align: center;
-  
-}
+// Pages
+@import "pages/simple-page";
+@import "pages/document-page";
+@import "pages/login-page";
+@import "pages/home";
+@import "pages/contact";
+@import "pages/welcome";
 
-.card {
-
-	&.-brief {
-		.card-meta {
-		
-			font-weight: 600;
-
-			time {
-				font-size: 16px;
-			}
-		}
-
-		a {
-			opacity: 0.6;
-		}
-
-	}
-
-	&.-detail {
-.card-meta {
-		
-		font-weight: 600; 
-
-
-		time {
-			font-size: 22px;
-		}
-		
-	}
-
-	}
-
-}
+// Themes
+@import "themes/theme";
+@import "themes/admin";
 
 
-.modal-welcome {
-	position: fixed;
-	z-index: 2000;
-	top: 20%;
-	right: 20%;
-	width: 300px;
-	background: #fff;
-	padding: 15px;
-	@include box-shadow;
-	text-align: center;
 
-	img {
-		margin: 0 auto;
-		display: block;
-	}
-}

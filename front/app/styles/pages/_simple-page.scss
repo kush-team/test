@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+    //border-top: solid 0.5em $main-color;
+    padding-top: 4.125em;
+    background: #F5F5F5;
+}
+
+.page-wrap {
+	@include span-columns(12);
+	@include shift(0);
+
+
+	@include media($tablet) {
+		@include span-columns(12);
+		@include shift(0);
+	}
+
+	.main-content-wrap {
+		@include span-columns(7);
+		min-height: calc(100vh - 160px);
+	    padding-top: 15px;
+	    margin-left: 25.23176%;
+
+		 @include media($tablet) {
+			@include span-columns(10);
+			@include shift(1);
+		}
+	}
+
+	.nav-wrap {
+	    @include span-columns(3);
+	    padding: 0 20px;
+        background: #fff;
+        overflow-y: scroll;
+	    height: 90vh;
+	    position: fixed;
+
+	    @include media($tablet) {
+			display: none;
+		}
+	}
+
+	section {
+		margin-bottom: 8.125em;
+		float: left;
+		width: 100%;
+	}
+
+
+}
+
+
+
+

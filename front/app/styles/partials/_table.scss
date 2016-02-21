@@ -1,0 +1,103 @@
+table {
+  $base-border-color: gainsboro !default;
+  $base-border-radius: 3px !default;
+  $base-background-color: white !default;
+  $base-line-height: 1.5em !default;
+  $base-spacing: 1.5em !default;
+  $action-color: #477DCA !default;
+  $dark-gray: #333 !default;
+  $light-gray: #DDD !default;
+  $medium-screen: em(640) !default;
+  $large-screen: em(860) !default;
+  $base-font-color: $dark-gray !default;
+  $table-border-color: $base-border-color;
+  $table-border: 1px solid $table-border-color;
+  $table-background: $base-background-color;
+  $table-header-background: lighten($table-background, 10);
+  $table-hover-background: darken($table-background, 2);
+  $table-stripe-background: darken($table-background, 4);
+  $table-stripe-background-hover: darken($table-stripe-background, 5);
+  $table-padding: .75em 1em;
+
+  border-collapse: separate;
+  border-spacing: 0;
+  border-bottom: 1px dashed $table-border-color;
+  width: 100%;
+  margin-bottom: 1.25em;
+
+
+  caption {
+    padding: $base-spacing / 2;
+    border-top: 2px solid $table-border-color;
+    text-align: right;
+    font-size: 0.9em;
+  }
+
+  tbody {
+    tr:hover > td, tr:hover > th {
+      background-color: $table-hover-background;
+    }
+    tr:first-child td,
+    tr:first-child th  {
+      border-top: 2px solid $table-border-color;
+    }
+  }
+
+  thead {
+    th {
+      background-color: $table-header-background;
+      padding: $table-padding;
+      word-break: normal;
+      text-align: left;
+      background-color: #f2f2f2;
+      border-bottom: 1px solid $table-border-color;
+      border-top: 1px solid $table-border-color;
+      font-weight: 600;
+      color: tint($dark, 10%);
+    }
+  }
+
+  tbody {
+    background-color: $table-background;
+
+    td {
+      border-bottom: 0px;
+      border-top: 1px dashed $table-border-color;
+      line-height: $base-line-height;
+      padding: $table-padding;
+
+      button {
+        display: inline-block;
+        font-size: .7em;
+        line-height: $base-line-height;
+        margin-bottom: .3em;
+        margin-right: 0.5em;
+        outline: none;
+        padding: .3em 1em;
+        width: 100%;
+
+        @include media($medium-screen) {
+          margin-bottom: 0;
+          width: auto;
+        }
+      }
+    }
+
+    #{$all-buttons} {
+      padding: 0.6em;
+      font-size: 0.9em;
+    }
+
+    th {
+      padding: 0.75em 1em;
+      border-top: 1px dashed #ddd;
+    }
+
+
+  }
+  
+  .icon {
+    text-align: right;
+  }
+
+}

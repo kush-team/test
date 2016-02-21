@@ -1,8 +1,38 @@
-{{model.town.name}}
+<div class="nav-wrap">
+	<ul>
+		{{#each session.user.towns as |town|}}
+			<li>
+				{{#link-to 'towns.show' town.id}}
+					{{town.name}}
+				{{/link-to}}
+			</li>
+		{{/each}}
+	</ul>
+</div>
 
-<h3>Ultimas fichas cargadas</h3>
-<ul>
-{{#each model.newbies as |newby|}}
-	<li>{{newby.voter.matricula}}  {{newby.voter.afiliado}}</li>
-{{/each}}
-</ul>
+<div class="main-content-wrap">
+
+	<h2>{{model.town.name}}</h2>
+
+	<ul class="newbie-list">
+		{{#each model.newbies as |newby|}}
+			{{#if newby.voter.matricula}}
+				<li> 
+					<div class="content">
+						<div class="header">{{newby.voter.matricula}}</div>
+						<div class="description">{{newby.voter.nombre}} {{newby.voter.apellido}}</div>
+					</div>
+					<div class="last-item">
+						<div class="badge afiliado-{{newby.voter.afiliado}}">&nbsp;</div>
+					</div>
+				</li>
+			{{else}}
+				<li class="fullfilled" >
+					<div class="content">
+						<span>&nbsp;</span>
+					</div>
+				</li>
+			{{/if}}
+		{{/each}}
+		</ul>
+</div>

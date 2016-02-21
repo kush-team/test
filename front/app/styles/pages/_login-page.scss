@@ -1,0 +1,41 @@
+.login-form {
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
+    border-radius: 0.28571429rem;
+    border: 1px solid rgba(34, 36, 38, 0.15);
+
+    fieldset {
+    	position: relative;
+	    text-align: center;
+
+    	label {
+		    position: absolute;
+		    top: 17px;
+		    left: 17px;
+    	}
+
+		h1 {
+			//margin: 0;
+		}
+
+    	input {
+		    padding: 13px 13px 13px 40px;
+    	}
+    }
+
+    .login-alert {
+		display: none;
+		opacity: 0;
+		@include transition(all 2.0s ease-in-out);
+
+		&.is-visible {
+			display: block;
+			opacity: 1;
+	    }
+    }
+
+
+}
