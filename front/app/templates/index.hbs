@@ -17,7 +17,11 @@
 		</div>
 
 		<div class="newbie-container">
-			<h3>Ultimos afiliados cargados</h3>
+			<h3>
+				Últimos afiliados cargados
+
+				<span>100 Fichas / 20 Aprobadas</span>
+			</h3>
 			<ul class="newbie-list">
 			{{#each model.newbies as |newby|}}
 				{{#if newby.voter.matricula}}
@@ -45,6 +49,12 @@
 				{{/if}}
 			{{/each}}
 			</ul>
+			
+			<ul class="pagination">
+				<li class="button"><a href="#0">{{fa-icon 'long-arrow-left'}} Anterior</a></li>
+				<li class="button"><a href="#0">{{fa-icon 'long-arrow-right'}} Siguiente</a></li>
+			</ul>
+			
 		</div>
 
 	</div>

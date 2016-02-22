@@ -1,0 +1,19 @@
+.pagination {
+	    width: 100%;
+    max-width: 768px;
+    margin: 0 auto 1em;
+    text-align: center;
+    background: #f9f9f9;
+    padding: 25px;
+        display: flex;
+    justify-content: space-between;
+	
+	li.button {
+	    display: inline-block;
+	}
+	
+	li {
+	    //display: none;
+	    margin: 0 .2em;
+	}
+}

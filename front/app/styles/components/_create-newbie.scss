@@ -32,6 +32,23 @@
     margin: 0;
     border-bottom: 3px solid #ddd;
     font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+
+    @include media($tablet) {
+          flex-direction: column;      
+    }
+
+        span {
+               margin: 0 0 0 0;
+    color: #999;
+    font-weight: 400;
+
+             @include media($tablet) {
+                margin: 10px 0 0 0;
+            }
+            
+        }
 	}
 }
 
