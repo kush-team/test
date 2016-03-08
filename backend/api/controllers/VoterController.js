@@ -6,21 +6,27 @@
  */
 var json2csv = require('json2csv');
 
+/**
+ * Module dependencies
+ */
+var util = require( 'util' ),
+  actionUtil = require( '../blueprints/_util/actionUtil' );
+
+var performSideload = (sails.config.blueprints.ember && sails.config.blueprints.ember.sideload);
+
 module.exports = {
 
 	findOne: function (req, res) {
 		var pk = req.params.id;
 
-		var query = 'SELECT v.matricula as "id", v.matricula, v.sexo, v.nombre, v.apellido, v.clase, v.domicilio, v.mesa';
+		var query = 'SELECT v.matricula as "id", v.matricula, v.sexo, v.nombre, v.apellido, v.clase, v.domicilio, s.name as "seccion", s.seccion as "town"';
 
-		query += ', s.descripcion as "escuela", s.domicilio as "direccion_escuela"'
 		query += ', COALESCE(j.afiliado, \'No\') as "afiliado"'
 		query += ' FROM voter v';
-		query += ' LEFT JOIN school s on v.circuito = s.circuito '
 		query += ' LEFT JOIN joined j on j.matricula = v.matricula '
+		query += ' LEFT JOIN town s on s.seccion = v.seccion '
 
 		query += ' WHERE ';
-		query += '(CAST(v.mesa AS INTEGER) BETWEEN CAST(s.desde AS INTEGER) AND CAST(s.hasta AS INTEGER)) AND ';
 		query += 'v.matricula = \'' + pk + '\';';	
 		
 		Voter.query(query, function (err, results) { 
@@ -92,6 +98,36 @@ module.exports = {
 	            });			
             });
 
+		});
+	},
+
+	find: function findRecords( req, res ) {
+		var pk = req.params.id;
+		var params = actionUtil.parseCriteria( req );
+
+
+		var matriculas = "";
+		if (params.id) {
+			matriculas = params.id.join(", ");
+		}
+
+		var query = 'SELECT v.matricula as "id", v.matricula, v.sexo, v.nombre, v.apellido, v.clase, v.domicilio, s.name as "seccion", s.seccion as "town"';
+
+		query += ', COALESCE(j.afiliado, \'No\') as "afiliado"'
+		query += ' FROM voter v';
+		query += ' LEFT JOIN joined j on j.matricula = v.matricula '
+		query += ' LEFT JOIN town s on s.seccion = v.seccion '
+
+		query += ' WHERE ';
+		query += 'CAST(v.matricula AS INTEGER) in (' + matriculas + ');';	
+		
+		Voter.query(query, function (err, results) { 
+			console.log(err);
+			if (results.rowCount > 0) {
+				res.ok({voters: results.rows});
+			} else {
+				res.notFound( 'No record found with the specified `id`.' );
+			}
 		});
 	}	
 };
