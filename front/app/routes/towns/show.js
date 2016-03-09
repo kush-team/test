@@ -11,5 +11,8 @@ export default Ember.Route.extend({
 
 	setupController: function (controller, model) {
 		this._super(controller, model);
-	},
+		if (model.newbies) {
+			model.meta = model.newbies.get('meta');
+		}
+	}
 });

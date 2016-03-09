@@ -14,25 +14,33 @@
 
 	<h2>{{model.town.name}}</h2>
 
-	<ul class="newbie-list">
-		{{#each model.newbies as |newby|}}
-			{{#if newby.voter.matricula}}
-				<li> 
-					<div class="content">
-						<div class="header">{{newby.voter.matricula}}</div>
-						<div class="description">{{newby.voter.nombre}} {{newby.voter.apellido}}</div>
-					</div>
-					<div class="last-item">
-						<div class="badge afiliado-{{newby.voter.afiliado}}">&nbsp;</div>
-					</div>
-				</li>
-			{{else}}
-				<li class="fullfilled" >
-					<div class="content">
-						<span>&nbsp;</span>
-					</div>
-				</li>
-			{{/if}}
-		{{/each}}
+	<div class="newbie-container">
+		<h3>
+			Últimos afiliados cargados
+
+			<span>{{meta.total}} Fichas / {{meta.aprobed}} Aprobadas</span>
+		</h3>
+		<ul class="newbie-list">
+
+			{{#each model.newbies as |newby|}}
+				{{#if newby.voter.matricula}}
+					<li> 
+						<div class="content">
+							<div class="header">{{newby.voter.matricula}}</div>
+							<div class="description">{{newby.voter.nombre}} {{newby.voter.apellido}}</div>
+						</div>
+						<div class="last-item">
+							<div class="badge afiliado-{{newby.voter.afiliado}}">&nbsp;</div>
+						</div>
+					</li>
+				{{else}}
+					<li class="fullfilled" >
+						<div class="content">
+							<span>&nbsp;</span>
+						</div>
+					</li>
+				{{/if}}
+			{{/each}}
 		</ul>
+	</div>
 </div>
