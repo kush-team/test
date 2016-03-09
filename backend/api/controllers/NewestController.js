@@ -63,25 +63,24 @@ module.exports = {
 	      } );
 	    }
 
-		    //res.ok( actionUtil.emberizeJSON( Model, matchingRecords, req.options.associations, performSideload ) );
-		    Model.find().where( where ).exec( function count( err, numberOfRecords ) {
-				// This is not super important, so on error just ignore.
-				if ( err ) {
-					return res.ok( actionUtil.emberizeJSON( Model, matchingRecords, req.options.associations, performSideload ) );
-				}
-				var query = 'SELECT j.afiliado FROM newest n LEFT JOIN voter v on v.matricula = n.voter LEFT JOIN joined j on j.matricula = v.matricula LEFT JOIN town s on s.seccion = v.seccion where j.afiliado = \'si\'';
-				if (where.town) {
-					query += ' AND n.town = \'' + where.town + '\'';
-				}
-				query += ';';
-			    var records = numberOfRecords.length;
-				Newest.query(query, function (err, results) { 
-			       var emberize = actionUtil.emberizeJSON( Model, matchingRecords, req.options.associations, performSideload );
-			       res.ok( actionUtil.insertMeta( emberize, { total: records, pages: Math.ceil(records / actionUtil.parseLimit( req )), aprobed: results.rowCount } ) );
-				});
-		    } );    
+	    //res.ok( actionUtil.emberizeJSON( Model, matchingRecords, req.options.associations, performSideload ) );
+	    Model.find().where( where ).exec( function count( err, numberOfRecords ) {
+			// This is not super important, so on error just ignore.
+			if ( err ) {
+				return res.ok( actionUtil.emberizeJSON( Model, matchingRecords, req.options.associations, performSideload ) );
+			}
+			var query = 'SELECT j.afiliado FROM newest n LEFT JOIN joined j on j.matricula = n.voter LEFT JOIN voter v on v.matricula = j.matricula  LEFT JOIN town s on s.seccion = v.seccion where j.afiliado =  \'si\'';
+			if (where.town) {
+				query += ' AND n.town = \'' + where.town + '\'';
+			}
+			query += ';';
+		    var records = numberOfRecords.length;
+			Newest.query(query, function (err, results) { 
+		       var emberize = actionUtil.emberizeJSON( Model, matchingRecords, req.options.associations, performSideload );
+		       res.ok( actionUtil.insertMeta( emberize, { total: records, pages: Math.ceil(records / actionUtil.parseLimit( req )), aprobed: results.rowCount } ) );
+			});
+	    } );    
 	  } );
 	},
-	
 };
 
