@@ -115,7 +115,7 @@ module.exports = {
 
 		query += ', COALESCE(j.afiliado, \'No\') as "afiliado"'
 		query += ' FROM voter v';
-		query += ' LEFT JOIN joined j on j.matricula = v.matricula '
+		query += ' LEFT JOIN joined j on CAST(j.matricula AS INTEGER) in (' + matriculas + ') '
 		query += ' LEFT JOIN town s on s.seccion = v.seccion '
 
 		query += ' WHERE ';
