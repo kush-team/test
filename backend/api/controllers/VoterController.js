@@ -120,6 +120,7 @@ module.exports = {
 		query += ' WHERE ';
 		query += 'CAST(v.matricula AS INTEGER) in (' + matriculas + ');';	
 		
+		console.log(query);
 		Voter.query(query, function (err, results) { 
 			console.log(err);
 			if (results.rowCount > 0) {
