@@ -113,8 +113,11 @@ module.exports = {
 
 		var query = 'SELECT v.matricula as "id", v.matricula, v.sexo, v.nombre, v.apellido, v.clase, v.domicilio, s.name as "seccion", s.seccion as "town"';
 
+		query += ', COALESCE(j.afiliado, \'No\') as "afiliado"'
 		query += ' FROM voter v';
+		query += ' JOIN joined j on CAST(j.matricula AS INTEGER) in (' + matriculas + ') '
 		query += ' LEFT JOIN town s on s.seccion = v.seccion '
+
 		query += ' WHERE ';
 		query += 'CAST(v.matricula AS INTEGER) in (' + matriculas + ');';	
 		
